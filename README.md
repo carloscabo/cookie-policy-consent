@@ -3,7 +3,7 @@ Cookies-warning
 
 Aviso de Cookies genérico.
 
-![Smaple snapshop](snapshot.png)
+![Smaple snapshop](https://raw.github.com/carloscabo/cookies-warning/master/snapshot.png)
 
 ## Requerimientos
 
