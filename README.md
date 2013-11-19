@@ -5,11 +5,11 @@ Aviso de Cookies genérico.
 
 ## Requerimientos
 
-- `JQuery`
-- `store.js`
-- `cookies-warning.js`
-- `cookies-warning-locales.js`
-- `cookies-warning.css`
+`JQuery`  
+`store.js`  
+`cookies-warning.js`  
+`cookies-warning-locales.js`  
+`cookies-warning.css`
 
 ## Abstract
 
@@ -33,7 +33,7 @@ Las internacionalizaciones se encuentran en el fichero:
 Así que si se le pasa en la inicialización un string de una longitud superior a 10 chars asume que le estamos pasando el contenido del mensaje de warning. Este contenido de mensaje de warning se rodeará automáticamente de `<p> ... </p>`.
 
 Más sinfo sobre language codes:  
-<http://msdn.microsoft.com/en-us/library/ee825488(v=cs.20).aspx>
+<http://msdn.microsoft.com/en-us/library/ee825488(v=cs.20).aspx>  
 <http://en.wikipedia.org/wiki/Language_code>
 
 ## Uso
@@ -56,7 +56,7 @@ Pasándole el código de lenguaje desde rails:
 
 Pasándole directamente un string:
 
-    <script>
+    <script type="text/javascript">
       $(document).ready(function() {
         CW.init('<b>Aviso de cookies</b><br>Mensaje personalizado<a href="/es/politica-cookies">modificar la configuración.</a>');
       });
