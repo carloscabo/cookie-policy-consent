@@ -24,15 +24,15 @@ Hay un fichero a parte con el string que se imprime para cada idioma dependiendo
 Los language codes tienen un límite de 10 caracteres.  
 **es**  
 **es-ES**  
-...
-**51-AAA-bkk** (este es el formato más largo en los ISO)  
+...  
+**51-AAA-bkk** _(este es el formato más largo en los ISO)_  
 
 Las internacionalizaciones se encuentran en el fichero:  
 `cookies-warning-locales.js`
 
 Así que si se le pasa en la inicialización un string de una longitud superior a 10 chars asume que le estamos pasando el contenido del mensaje de warning. Este contenido de mensaje de warning se rodeará automáticamente de `<p> ... </p>`.
 
-Más sinfo sobre language codes
+Más sinfo sobre language codes:  
 <http://msdn.microsoft.com/en-us/library/ee825488(v=cs.20).aspx>
 <http://en.wikipedia.org/wiki/Language_code>
 
