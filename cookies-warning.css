@@ -1,15 +1,18 @@
 #cookies-warning {
   width: 100%;
   padding: 16px 0;
-  border-top: 1px solid #fff;
   position: fixed;
   bottom: 0;
   z-index: 999;
+  border-top: 1px solid #fff;
   background: #335B90;
 }
 #cookies-warning p {
+  position: relative;
   margin: 0 auto;
-  max-width: 940px;
+  padding: 0 10px 0 50px;
+  max-width: 900px;
+  text-align: left;
   color: #fff;
 }
 #cookies-warning p a {
@@ -20,6 +23,15 @@
   color: #fff;
 }
 #cookies-warning svg {
+  position: absolute;
+  top: -2px;
+  left: 10px;
   float: left;
   margin-right: 8px;
+}
+#cookies-warning svg .bg {
+  fill: #FFFFFF;
+}
+#cookies-warning svg .fg {
+  fill: #335B90;
 }
