@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Cookies warning sample</title>
+  <style>
+    body {
+      position: relative;
+      margin: 0;
+      padding: 0;
+      background: #333;
+      font-size: 13px;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+    p {
+      margin-left: 20px;
+    }
+    a {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+<p>
+  More info at:<br>
+  <a href="https://github.com/carloscabo/cookies-warning">https://github.com/carloscabo/cookies-warning</a></p>
+
+
+<link rel="stylesheet" href="cookies-warning.css" type="text/css">
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="cookies-warning.js"></script>
+<script src="cookies-warning-locales.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    // Cookies-warning
+    CW.init('es');
+  });
+</script>
+</body>
+</html>
