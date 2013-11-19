@@ -1,0 +1,25 @@
+#cookies-warning {
+  width: 100%;
+  padding: 16px 0;
+  border-top: 1px solid #fff;
+  position: fixed;
+  bottom: 0;
+  z-index: 999;
+  background: #335B90;
+}
+#cookies-warning p {
+  margin: 0 auto;
+  max-width: 940px;
+  color: #fff;
+}
+#cookies-warning p a {
+  color: #fff;
+  text-decoration: underline;
+}
+#cookies-warning p a:hover {
+  color: #fff;
+}
+#cookies-warning svg {
+  float: left;
+  margin-right: 8px;
+}
