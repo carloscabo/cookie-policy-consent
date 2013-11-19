@@ -6,7 +6,6 @@ Aviso de Cookies genérico.
 ## Requerimientos
 
 `JQuery`  
-`store.js`  
 `cookies-warning.js`  
 `cookies-warning-locales.js`  
 `cookies-warning.css`
