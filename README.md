@@ -3,6 +3,8 @@ Cookies-warning
 
 Aviso de Cookies genérico.
 
+![Smaple snapshop](snapshot.png)
+
 ## Requerimientos
 
 `JQuery`  
@@ -35,6 +37,12 @@ Más sinfo sobre language codes:
 <http://msdn.microsoft.com/en-us/library/ee825488(v=cs.20).aspx>  
 <http://en.wikipedia.org/wiki/Language_code>
 
+## SVG
+
+Para hacer el iconito de _información_ he usado un SVG inline. Es lo más pequeño que se me ha ocurrido (dos círculos y un cuadrado). La ventaja del SVG es que por CSS también se puede cambiar el fondo y el color de la "i" (ver estilos en `cookies-warning.css`).
+
+La desventaja es que en IE8 no se vé, pero tampoco pasa nada.
+
 ## Uso
 
 Pasándole el código de lenguaje:
@@ -65,6 +73,8 @@ Pasándole directamente un string:
 
 Por defecto hace un `append` del `div` del warning al `body`.
 Puede ser útil hacer que se pueda seleccionar el selector al que se hace.
+
+Quitarle todo el JQuery, creo que se puede hacer independiente de JQuery con muy poco código más.
 
 ## Known bugs
 
