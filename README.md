@@ -69,13 +69,19 @@ Pasándole directamente un string:
         CW.init('<b>Aviso de cookies</b><br>Mensaje personalizado<a href="/es/politica-cookies">modificar la configuración.</a>');
       })();
     </script>
+    
+Si usas JQuery puedes llamarlo dentro del un $.ready normal
+
+    <script type="text/javascript">
+      $( document ).ready(function() {
+        CW.init('es');
+      });
+    </script>
 
 ## To-do
 
 Por defecto hace un `append` del `div` del warning al `body`.
 Puede ser útil hacer que se pueda seleccionar el selector al que se hace.
-
-Quitarle todo el JQuery, creo que se puede hacer independiente de JQuery con muy poco código más.
 
 ## Known bugs
 
