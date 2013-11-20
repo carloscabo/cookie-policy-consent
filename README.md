@@ -1,22 +1,21 @@
 Cookies-warning
 ===============
 
-Aviso de Cookies genérico.
+Aviso de Cookies genérico en JS puro (no necesita JQuery ni similar).
 
 ![Smaple snapshop](https://raw.github.com/carloscabo/cookies-warning/master/snapshot.png)
 
 ## Requerimientos
 
-`JQuery`  
 `cookies-warning.js`  
 `cookies-warning-locales.js`  
 `cookies-warning.css`
 
 ## Abstract
 
-Aviso de aceptación de Política de Cookies con soporte para internacionalización, personalización de colore básicos, responsive y con un icono SVG.
+Aviso de aceptación de Política de Cookies con soporte para internacionalización, personalización de colores básicos, responsive y con un icono SVG (con colores personalizables).
 
-Se ha usado un append de JQuery ya que así se evita que los buscadores indexen el mensaje de cookies como contenido de la páginas, esto es especialmente importante si el mensaje de cookies se coloca en la parte superior de la página antes de los contenidos.
+Se ha usado un **_append_** de JS ya que así se evita que los buscadores indexen el mensaje de cookies como _contenido de la páginas_, esto es especialmente importante si el mensaje de cookies se coloca en la parte superior de la página antes de los contenidos.
 
 ## Internacionalización
 
@@ -48,25 +47,25 @@ La desventaja es que en IE8 no se vé, pero tampoco pasa nada.
 Pasándole el código de lenguaje:
 
     <script type="text/javascript">
-      $(document).ready(function() {
+      (function() {
         CW.init('es');
-      });
+      })();
     </script>
 
 Pasándole el código de lenguaje desde rails:
 
     <script type="text/javascript">
-      $(document).ready(function() {
+      (function() {
         CW.init('<%= I18n.locale %>');
-      });
+      })();
     </script>
 
 Pasándole directamente un string:
 
     <script type="text/javascript">
-      $(document).ready(function() {
+      (function() {
         CW.init('<b>Aviso de cookies</b><br>Mensaje personalizado<a href="/es/politica-cookies">modificar la configuración.</a>');
-      });
+      })();
     </script>
 
 ## To-do
