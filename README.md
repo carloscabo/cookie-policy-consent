@@ -3,6 +3,8 @@ Cookies-warning
 
 Aviso de Cookies genérico en JS puro (no necesita JQuery ni similar).
 
+<h3><a href="http://htmlpreview.github.io/?https://github.com/carloscabo/cookies-warning/blob/master/demo.html" target="_blank">Demo de funcionamiento / testeo</a></h3>
+
 ![Smaple snapshop](https://raw.github.com/carloscabo/cookies-warning/master/snapshot.png)
 
 ## Requerimientos
