@@ -44,7 +44,7 @@ Para hacer el iconito de _información_ he usado un SVG inline. Es lo más peque
 
 La desventaja es que en IE8 no se vé, pero tampoco pasa nada.
 
-## Insertar al final del `body` o antes de un elemento concreto
+## Donde se inserta el aviso
 
 Por defecto si no pasamos ningún parámetro adicional el mensaje de cookies **se insertará al final del `body`**, si queremos que se inserte en otra posición del DOM debemos pasarle el ID del elemento **delante del cual se insertará**, por ejemplo el siguiente código insertará el aviso **antes** del elemento con el **id** `page_container`:
 
