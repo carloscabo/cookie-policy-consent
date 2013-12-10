@@ -1,5 +1,7 @@
 /*
-  Cookies warning function
+  Cookies warning function by Carlos Cabo 2013
+  https://github.com/carloscabo/cookies-warning
+  v.1.0.1
 */
 ;var CW = {
   cookie_warning_id: 'cookies-warning',
