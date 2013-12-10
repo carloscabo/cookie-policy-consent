@@ -15,6 +15,9 @@
   text-align: left;
   color: #fff;
 }
+#cookies-warning p b {
+  font-weight: 700;
+}
 #cookies-warning p a {
   color: #fff;
   text-decoration: underline;

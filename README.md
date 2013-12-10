@@ -44,6 +44,32 @@ Para hacer el iconito de _información_ he usado un SVG inline. Es lo más peque
 
 La desventaja es que en IE8 no se vé, pero tampoco pasa nada.
 
+## Insertar al final del `body` o antes de un elemento concreto
+
+Por defecto si no pasamos ningún parámetro adicional el mensaje de cookies **se insertará al final del `body`**, si queremos que se inserte en otra posición del DOM debemos pasarle el ID del elemento **delante del cual se insertará**, por ejemplo el siguiente código insertará el aviso **antes** del elemento con el **id** `page_container`:
+
+    <script type="text/javascript">
+      (function() {
+        CW.init('es', 'page_container');
+      })();
+    </script>
+
+## Cerrar el aviso de cookies
+
+Si dentro del contenido del aviso de cookies existe algún elemento con el **id** `cookies-warning-close` se asume que ese es el elemento que debe pulsarse para cerrar el aviso.
+
+Si no existe ningún elemento con ese ID haciendo click en cualquier parte dentro del aviso este se cerrará.
+
+## Mostrar solamente una vez
+
+En algunos sitios asumen que el aviso solo debe mostrarse una primera vez y que el usuario acepta la política implícitamente, eso se puede hacer pasando un tercer parámetro a `true`.
+
+    <script type="text/javascript">
+      (function() {
+        CW.init('es', 'page_container', true); // Show only once!
+      })();
+    </script>
+
 ## Uso
 
 Pasándole el código de lenguaje:
@@ -69,19 +95,18 @@ Pasándole directamente un string:
         CW.init('<b>Aviso de cookies</b><br>Mensaje personalizado<a href="/es/politica-cookies">modificar la configuración.</a>');
       })();
     </script>
-    
+
 Si usas JQuery puedes llamarlo dentro del un $.ready normal
 
     <script type="text/javascript">
       $( document ).ready(function() {
-        CW.init('es');
+        CW.init('es', 'page_container');
       });
     </script>
 
 ## To-do
 
-Por defecto hace un `append` del `div` del warning al `body`.
-Puede ser útil hacer que se pueda seleccionar el selector al que se hace.
+Sugerencias?
 
 ## Known bugs
 

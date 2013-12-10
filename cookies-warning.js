@@ -2,22 +2,22 @@
   Cookies warning function
 */
 ;var CW = {
-
+  cookie_warning_id: 'cookies-warning',
   cookie_name: 'cookies-warning-accepted',
   svg_bg: '#FFFFFF',
   svg_fg: '#000000',
 
-  init: function(lang) {
+  init: function(lang, before_element_ID, show_only_once) {
     if (!CW.check(CW.cookie_name)) {
-      CW.appendWarning(lang);
+      CW.appendWarning(lang, before_element_ID, show_only_once);
     }
   },
 
-  appendWarning: function(lang) {
+  appendWarning: function(lang, before_element_ID,  show_only_once) {
     var
       t = '',
       h = '',
-      d = document.createElement('div'),
+      d =    document.createElement('div'),
       body = document.getElementsByTagName('body')[0];
 
     // If no lang set to 'es'
@@ -34,19 +34,47 @@
 
     // Create MSG
     h = '<p><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="32px" height="32px"><circle fill="'+CW.svg_bg+'" cx="16" cy="16" r="15" class="bg" /><circle fill="'+CW.svg_fg+'" cx="16" cy="7.216" r="2.733" class="fg"/><rect  fill="'+CW.svg_fg+'" x="13.267" y="12.417" width="5.466" height="14.938" class="fg"/></svg>'+t+'</p>';
-    d.setAttribute('id', 'cookies-warning');
+    d.setAttribute('id', CW.cookie_warning_id);
     d.innerHTML =  h;
 
+    // Append before or after
+    if (before_element_ID === undefined) {
+      // Append end of body
+      body.appendChild(d);
+    } else {
+      // Append before elemint_ID
+      var bID = document.getElementById(before_element_ID);
+      bID.parentNode.insertBefore(d, bID);
+    }
+
+    // Show cookie-warning only first time
+    if (show_only_once) {
+      CW.set(CW.cookie_name, true, 999);
+    }
+
     // Hide when clicked
-    d.onclick = function () {
-      this.parentElement.removeChild(this);
-    };
+    // Set cookie to true
+    // If there is close button
+    var cb = document.getElementById('cookies-warning-close');
+    if (cb != null) {
+      cb.onclick = function(){
+        CW.removeWarning();
+      }
+    } else {
+      // Close clicking anywhere
+      d.onclick = function(){
+        CW.removeWarning();
+      }
+    }
 
-    // Append
-    body.appendChild(d);
+  },
 
-    // Set cookie
+  removeWarning: function() {
     CW.set(CW.cookie_name, true, 999);
+    // Crossbrowser delete element by ID
+    var el = document.getElementById(CW.cookie_warning_id);
+    el.outerHTML = '';
+    delete el;
   },
 
   // Cookies handle
