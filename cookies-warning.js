@@ -40,7 +40,8 @@
     d.innerHTML =  h;
 
     // Append before or after
-    if (before_element_ID === undefined) {
+    // If undefined OR null
+    if (before_element_ID  == null) {
       // Append end of body
       body.appendChild(d);
     } else {
@@ -58,15 +59,15 @@
     // Set cookie to true
     // If there is close button
     var cb = document.getElementById('cookies-warning-close');
-    if (cb != null) {
+    if (cb !== null) {
       cb.onclick = function(){
         CW.removeWarning();
-      }
+      };
     } else {
       // Close clicking anywhere
       d.onclick = function(){
         CW.removeWarning();
-      }
+      };
     }
 
   },
