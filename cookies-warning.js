@@ -1,18 +1,22 @@
 /*
   Cookies warning function by Carlos Cabo 2013
   https://github.com/carloscabo/cookies-warning
-  v.1.0.1
+  v.1.0.3
 */
 ;var CW = {
   cookie_warning_id: 'cookies-warning',
   cookie_name: 'cookies-warning-accepted',
   svg_bg: '#FFFFFF',
   svg_fg: '#000000',
+  domain: '',
 
   init: function(lang, before_element_ID, show_only_once) {
     if (!CW.check(CW.cookie_name)) {
       CW.appendWarning(lang, before_element_ID, show_only_once);
     }
+    // Hostame / domain
+    var hn = window.location.host;
+    this.domain = hn.substring(hn.lastIndexOf(".", hn.lastIndexOf(".") - 1) + 1);
   },
 
   appendWarning: function(lang, before_element_ID,  show_only_once) {
@@ -105,7 +109,7 @@
   set: function(c_name, value, expiredays) {
     var exdate = new Date();
     exdate.setDate(exdate.getDate() + expiredays);
-    document.cookie = c_name + "=" + escape(value) + ((expiredays == null) ? "" : "; expires=" + exdate.toUTCString());
+    document.cookie = c_name + "=" + escape(value) + ((expiredays == null) ? "" : "; expires=" + exdate.toUTCString()) + ';path=/;domain=.' + CW.domain + ';';
   },
 
   // CHECK returns only true or false if the cookie exists
