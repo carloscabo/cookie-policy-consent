@@ -49,9 +49,9 @@ La desventaja es que en IE8 no se vé, pero tampoco pasa nada.
 Por defecto si no pasamos ningún parámetro adicional el mensaje de cookies **se insertará al final del `body`**, si queremos que se inserte en otra posición del DOM debemos pasarle el ID del elemento **delante del cual se insertará**, por ejemplo el siguiente código insertará el aviso **antes** del elemento con el **id** `page_container`:
 
     <script type="text/javascript">
-      (function() {
+      window.onload = function() {
         CW.init('es', 'page_container');
-      })();
+      };
     </script>
 
 ## Cerrar el aviso de cookies
@@ -65,9 +65,9 @@ Si no existe ningún elemento con ese ID haciendo click en cualquier parte dentr
 En algunos sitios asumen que el aviso solo debe mostrarse una primera vez y que el usuario acepta la política implícitamente, eso se puede hacer pasando un tercer parámetro a `true`.
 
     <script type="text/javascript">
-      (function() {
+      window.onload = function() {
         CW.init('es', 'page_container', true); // Show only once!
-      })();
+      };
     </script>
 
 ## Uso
@@ -75,38 +75,38 @@ En algunos sitios asumen que el aviso solo debe mostrarse una primera vez y que 
 Pasándole el código de lenguaje:
 
     <script type="text/javascript">
-      (function() {
+      window.onload = function() {
         CW.init('es');
-      })();
+      };
     </script>
 
 Pasándole el código de lenguaje desde rails:
 
     <script type="text/javascript">
-      (function() {
+      window.onload = function() {
         CW.init('<%= I18n.locale %>');
-      })();
+      };
     </script>
 
 Pasándole directamente un string:
 
     <script type="text/javascript">
-      (function() {
+      window.onload = function() {
         CW.init('<b>Aviso de cookies</b><br>Mensaje personalizado<a href="/es/politica-cookies">modificar la configuración.</a>');
-      })();
+      };
     </script>
 
-Si usas JQuery puedes llamarlo dentro del un $.ready normal
+Si usas JQuery puedes llamarlo dentro del un $.domready normal que se ejecutará cuando esté listo el DOM de la página en vez de esperar a que se cargue la página completa.
 
     <script type="text/javascript">
-      $( document ).ready(function() {
+      $(document).ready(function() {
         CW.init('es', 'page_container');
       });
     </script>
 
 ## To-do
 
-Sugerencias?
+Añadir soporte para que el evento de onclick en el botón de cerrar no machaque otros eventos como por ejemplo los de **Google Tag Manager**.
 
 ## Known bugs
 
