@@ -31,7 +31,7 @@
       CW.s = CW.scripts[CW.scripts.length - 1].src; // Current script
     }
 
-    // Merge params
+    // Merge params if passed on init
     for (var attrname in params) {
       if (CW.hasOwnProperty(attrname)) {
         CW[attrname] = params[attrname];
@@ -107,7 +107,6 @@
   appendCSS: function () {
     var
       lnk = document.createElement('link');
-
     lnk.type  = 'text/css';
     lnk.rel   = 'stylesheet';
     lnk.media = 'screen';
@@ -120,13 +119,12 @@
   appendLocales: function () {
     var
       sc_ = document.createElement('script');
-
     sc_.type = 'text/javascript';
     sc_.src  = CW.s.replace('.js','-locales.js').replace('?auto_init','');
     CW.hID.appendChild(sc_);
   },
 
-  // Waits for external css and JS to be loaded
+  // Waits for external CSS and JS to be loaded
   // Add to the queue without overwriting window.onload
   waitOnLoadEvent: function () {
     window.addEventListener ?
@@ -194,7 +192,8 @@
   // Auto-initializes the CW script if has param '?auto_init'
   autoInit: function () {
     CW.s = CW.scripts[CW.scripts.length - 1].src; // Current script
-    if (CW.s.match('auto_init')) {
+    if (CW.s.match(/\?auto_init/)) {
+      CW.s = CW.s.replace(/\?auto_init/,'');
       CW.init();
     }
   }
