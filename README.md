@@ -50,7 +50,10 @@ Por defecto si no pasamos ningún parámetro adicional el mensaje de cookies **s
 
     <script type="text/javascript">
       window.onload = function() {
-        CW.init('es', 'page_container');
+        CW.init({
+          lang: 'es',
+          before_element_ID: 'page_container'
+        });
       };
     </script>
 
@@ -66,7 +69,11 @@ En algunos sitios asumen que el aviso solo debe mostrarse una primera vez y que 
 
     <script type="text/javascript">
       window.onload = function() {
-        CW.init('es', 'page_container', true); // Show only once!
+        CW.init({
+          lang: 'es',
+          before_element_ID: 'page_container',
+          show_only_once: true
+        });
       };
     </script>
 
@@ -76,7 +83,9 @@ Pasándole el código de lenguaje:
 
     <script type="text/javascript">
       window.onload = function() {
-        CW.init('es');
+        CW.init({
+          lang: 'es'
+        });
       };
     </script>
 
@@ -84,7 +93,9 @@ Pasándole el código de lenguaje desde rails:
 
     <script type="text/javascript">
       window.onload = function() {
-        CW.init('<%= I18n.locale %>');
+        CW.init({
+          lang: '<%= I18n.locale %>'
+        });
       };
     </script>
 
@@ -92,7 +103,22 @@ Pasándole directamente un string:
 
     <script type="text/javascript">
       window.onload = function() {
-        CW.init('<b>Aviso de cookies</b><br>Mensaje personalizado<a href="/es/politica-cookies">modificar la configuración.</a>');
+        CW.init({
+          lang:'<b>Aviso de cookies</b><br>Mensaje personalizado<a href="/es/politica-cookies">modificar la configuración.</a>'
+        });
+      };
+    </script>
+
+Por defecto busca la hoja de estilos en el mismo path que esté la propia librería en JS pero podemos poner un path personalizado cuando la inizializamos:
+
+Pasándole directamente un string:
+
+    <script type="text/javascript">
+      window.onload = function() {
+        CW.init({
+          lang:'es',
+          stylesheet: '/assets/css/cookies-warning.css'
+        });
       };
     </script>
 
@@ -100,7 +126,10 @@ Si usas JQuery puedes llamarlo dentro del un $.domready normal que se ejecutará
 
     <script type="text/javascript">
       $(document).ready(function() {
-        CW.init('es', 'page_container');
+        CW.init({
+          lang: 'es',
+          before_element_ID: 'page_container'
+        });
       });
     </script>
 

@@ -1,61 +1,76 @@
 /*
-  Cookies warning function by Carlos Cabo 2013
+  Cookies warning function by Carlos Cabo 2014
   https://github.com/carloscabo/cookies-warning
-  v.1.0.3
+  v.1.0.4
 */
 ;var CW = {
+
+  // Init params
   cookie_warning_id: 'cookies-warning',
   cookie_name: 'cookies-warning-accepted',
   svg_bg: '#FFFFFF',
   svg_fg: '#000000',
+  lang: 'es',
+  stylesheet: 'cookies-warning.css',
+  before_element_ID: null,
+  show_only_once: false,
+
+  // Private
   domain: '',
 
-  init: function(lang, before_element_ID, show_only_once) {
-    if (!CW.check(CW.cookie_name)) {
-      CW.appendWarning(lang, before_element_ID, show_only_once);
+  init: function(params) {
+
+    // Merge params
+    for (var attrname in params) {
+      if (CW.hasOwnProperty(attrname)) {
+        CW[attrname] = params[attrname];
+      }
     }
-    // Hostame / domain
+
+    // Hostname / domain
     var hn = window.location.host;
     this.domain = hn.substring(hn.lastIndexOf(".", hn.lastIndexOf(".") - 1) + 1);
+
+    // Append advice
+    if (!CW.check(CW.cookie_name)) {
+      CW.appendCSS();
+      CW.appendWarning();
+    }
   },
 
-  appendWarning: function(lang, before_element_ID,  show_only_once) {
+  appendWarning: function() {
     var
       t = '',
       h = '',
       d =    document.createElement('div'),
       body = document.getElementsByTagName('body')[0];
 
-    // If no lang set to 'es'
-    if (lang === undefined) {
-      lang = 'es';
-    }
-
     // If passing long string
-    if (lang.length > 10) {
-      t = lang;
+    if (this.lang.length > 10) {
+      t = this.lang;
     } else {
-      t = CW.Locales[lang];
+      t = CW.Locales[this.lang];
     }
 
     // Create MSG
     h = '<p><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="32px" height="32px"><circle fill="'+CW.svg_bg+'" cx="16" cy="16" r="15" class="bg" /><circle fill="'+CW.svg_fg+'" cx="16" cy="7.216" r="2.733" class="fg"/><rect  fill="'+CW.svg_fg+'" x="13.267" y="12.417" width="5.466" height="14.938" class="fg"/></svg>'+t+'</p>';
     d.setAttribute('id', CW.cookie_warning_id);
+    d.setAttribute('style', 'display:none;');
     d.innerHTML =  h;
 
     // Append before or after
     // If undefined OR null
-    if (before_element_ID  == null) {
+    if (this.before_element_ID  == null) {
       // Append end of body
       body.appendChild(d);
     } else {
       // Append before elemint_ID
-      var bID = document.getElementById(before_element_ID);
+      var bID = document.getElementById(this.before_element_ID);
       bID.parentNode.insertBefore(d, bID);
     }
 
     // Show cookie-warning only first time
-    if (show_only_once) {
+    if (this.show_only_once) {
       CW.set(CW.cookie_name, true, 999);
     }
 
@@ -74,6 +89,18 @@
       };
     }
 
+  },
+
+  appendCSS: function () {
+    var
+      hID = document.getElementsByTagName('head')[0],
+      lnk = document.createElement('link');
+
+    lnk.type  = 'text/css';
+    lnk.rel   = 'stylesheet';
+    lnk.media = 'screen';
+    lnk.href  = this.stylesheet;
+    hID.appendChild(lnk);
   },
 
   removeWarning: function() {

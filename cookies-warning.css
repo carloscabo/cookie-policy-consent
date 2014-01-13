@@ -40,15 +40,22 @@
 }
 #cookies-warning a#cookies-warning-more-info {
   margin-right: 10px;
-  background: #dc042b;
-  padding: 16px;
+  /*background: #dc042b;*/
+  /*padding: 16px;*/
+
+  text-decoration: underline;
   color: #fff;
-  text-decoration: none;
 }
 #cookies-warning a#cookies-warning-close {
   margin-right: 10px;
-  background: #ccc;
-  padding: 16px;
+  /*background: #ccc;*/
+  /*padding: 16px;*/
+
+  text-decoration: underline;
   color: #fff;
-  text-decoration: none;
+}
+
+/* CAUTION!: This rule must be the last */
+#cookies-warning {
+  display: block !important;
 }
