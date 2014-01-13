@@ -13,6 +13,8 @@ Aviso de Cookies genérico en JS puro (no necesita JQuery ni similar).
 `cookies-warning-locales.js`  
 `cookies-warning.css`
 
+Solo es necesario incluir el `cookies-warning.js`, los otros dos son automáticamente incluídos desde el primero.
+
 ## Abstract
 
 Aviso de aceptación de Política de Cookies con soporte para internacionalización, personalización de colores básicos, responsive y con un icono SVG (con colores personalizables).
@@ -122,7 +124,7 @@ Pasándole directamente un string:
       };
     </script>
 
-Si usas JQuery puedes llamarlo dentro del un $.domready normal que se ejecutará cuando esté listo el DOM de la página en vez de esperar a que se cargue la página completa.
+Si usas JQuery puedes llamarlo dentro del un $.domready normal que se ejecutará cuando esté listo el DOM de la página en vez de esperar a que se cargue la página completa, esto es más adecuado que emplear el `window.onload`.
 
     <script type="text/javascript">
       $(document).ready(function() {
@@ -132,8 +134,16 @@ Si usas JQuery puedes llamarlo dentro del un $.domready normal que se ejecutará
         });
       });
     </script>
+    
+## Autoloading
+
+Si se incluye el JS con la opción "autoloading" intentará hacer todo el proceso, con las opciones por defecto... está sería así:
+
+    <script src="cookies-warning.js?auto_init"></script>
 
 ## To-do
+
+HAcer que se pueda especificar el idioma en el modo `autoloading`.
 
 Añadir soporte para que el evento de onclick en el botón de cerrar no machaque otros eventos como por ejemplo los de **Google Tag Manager**.
 

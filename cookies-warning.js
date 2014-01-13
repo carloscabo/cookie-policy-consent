@@ -15,10 +15,21 @@
   before_element_ID: null,
   show_only_once: false,
 
-  // Private
+  // Head
+  hID: document.getElementsByTagName('head')[0],
+
+  // Currents script
+  scripts: document.getElementsByTagName('script'),
+  s: null, // Current script file
+
+  // Cureent domain / host
   domain: '',
 
   init: function(params) {
+
+    if (CW.s == null) {
+      CW.s = CW.scripts[CW.scripts.length - 1].src; // Current script
+    }
 
     // Merge params
     for (var attrname in params) {
@@ -33,8 +44,9 @@
 
     // Append advice
     if (!CW.check(CW.cookie_name)) {
+      CW.appendLocales();
       CW.appendCSS();
-      CW.appendWarning();
+      CW.waitOnLoadEvent();
     }
   },
 
@@ -46,10 +58,10 @@
       body = document.getElementsByTagName('body')[0];
 
     // If passing long string
-    if (this.lang.length > 10) {
-      t = this.lang;
+    if (CW.lang.length > 10) {
+      t = CW.lang;
     } else {
-      t = CW.Locales[this.lang];
+      t = CW.Locales[CW.lang];
     }
 
     // Create MSG
@@ -91,18 +103,38 @@
 
   },
 
+  // Appends default CSS stylesheet
   appendCSS: function () {
     var
-      hID = document.getElementsByTagName('head')[0],
       lnk = document.createElement('link');
 
     lnk.type  = 'text/css';
     lnk.rel   = 'stylesheet';
     lnk.media = 'screen';
     lnk.href  = this.stylesheet;
-    hID.appendChild(lnk);
+    CW.hID.appendChild(lnk);
   },
 
+  // Appends <script> cookies-warning-locales.js
+  // Must be in the same folder of this file.
+  appendLocales: function () {
+    var
+      sc_ = document.createElement('script');
+
+    sc_.type = 'text/javascript';
+    sc_.src  = CW.s.replace('.js','-locales.js').replace('?auto_init','');
+    CW.hID.appendChild(sc_);
+  },
+
+  // Waits for external css and JS to be loaded
+  // Add to the queue without overwriting window.onload
+  waitOnLoadEvent: function () {
+    window.addEventListener ?
+    window.addEventListener("load",CW.appendWarning,false) :
+    window.attachEvent && window.attachEvent("onload",CW.appendWarning);
+  },
+
+  // Hides warning
   removeWarning: function() {
     CW.set(CW.cookie_name, true, 999);
     // Crossbrowser delete element by ID
@@ -156,7 +188,17 @@
     if (c_name === undefined) {
       c_name = CW.cookie_name;
     }
-    CW.set(c_name, '', 0);
+    CW.set(c_name,'', 0);
+  },
+
+  // Auto-initializes the CW script if has param '?auto_init'
+  autoInit: function () {
+    CW.s = CW.scripts[CW.scripts.length - 1].src; // Current script
+    if (CW.s.match('auto_init')) {
+      CW.init();
+    }
   }
 };
 
+// Script auto init
+CW.autoInit();
