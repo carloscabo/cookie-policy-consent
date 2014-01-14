@@ -27,6 +27,7 @@
 
   init: function(params) {
 
+    // Current script name
     if (CW.s == null) {
       CW.s = CW.scripts[CW.scripts.length - 1].src; // Current script
     }
@@ -44,9 +45,12 @@
 
     // Append advice
     if (!CW.check(CW.cookie_name)) {
-      CW.appendLocales();
-      CW.appendCSS();
-      CW.waitOnLoadEvent();
+      CW.loadScript(CW.s.replace('.js','-locales.js'), function(){
+        // CW.appendLocales();
+        CW.appendCSS();
+        CW.appendWarning();
+      });
+      // CW.waitOnLoadEvent();
     }
   },
 
@@ -110,27 +114,18 @@
     lnk.type  = 'text/css';
     lnk.rel   = 'stylesheet';
     lnk.media = 'screen';
-    lnk.href  = this.stylesheet;
+    lnk.href  = CW.stylesheet;
     CW.hID.appendChild(lnk);
-  },
-
-  // Appends <script> cookies-warning-locales.js
-  // Must be in the same folder of this file.
-  appendLocales: function () {
-    var
-      sc_ = document.createElement('script');
-    sc_.type = 'text/javascript';
-    sc_.src  = CW.s.replace('.js','-locales.js').replace('?auto_init','');
-    CW.hID.appendChild(sc_);
   },
 
   // Waits for external CSS and JS to be loaded
   // Add to the queue without overwriting window.onload
-  waitOnLoadEvent: function () {
+  // Not using, trying DOMReady instead
+  /*waitOnLoadEvent: function () {
     window.addEventListener ?
     window.addEventListener("load",CW.appendWarning,false) :
     window.attachEvent && window.attachEvent("onload",CW.appendWarning);
-  },
+  },*/
 
   // Hides warning
   removeWarning: function() {
@@ -141,7 +136,7 @@
     delete el;
   },
 
-  // Cookies handle
+  // Cookies handlers
   // found on http://snipplr.com/view/36790/jscookies--my-simple-easy-pure-js-javascript-cookies-function/
 
   // GET returns the value of the cookie
@@ -189,11 +184,47 @@
     CW.set(c_name,'', 0);
   },
 
+  // From https://gist.github.com/dciccale/4087856
+  DOMReady: function(a,b,c){b=document,c='addEventListener';b[c]?b[c]('DOMContentLoaded',a):window.attachEvent('onload',a)},
+
+
+  // http://www.nczonline.net/blog/2009/07/28/the-best-way-to-load-external-javascript/
+  loadScript: function (url, callback){
+    var
+      script = document.createElement("script");
+
+    script.type = "text/javascript";
+    if (script.readyState){  //IE
+      script.onreadystatechange = function(){
+        if (script.readyState == "loaded" ||
+          script.readyState == "complete"){
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else {  //Others
+      script.onload = function(){
+        callback();
+      };
+    }
+    script.src = url;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  },
+
   // Auto-initializes the CW script if has param '?auto_init'
   autoInit: function () {
     CW.s = CW.scripts[CW.scripts.length - 1].src; // Current script
+
+    // If has autoinit parameter
     if (CW.s.match(/\?auto_init/)) {
-      CW.s = CW.s.replace(/\?auto_init/,'');
+
+      // If set lang parameter
+      var l = CW.s.match(/lang=(.*)$/);
+      if (l) {
+        CW.lang = l[1];
+      }
+      // Remove params
+      CW.s = CW.s.replace(/.js(.*)$/,'.js');
       CW.init();
     }
   }

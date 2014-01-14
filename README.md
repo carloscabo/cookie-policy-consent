@@ -3,9 +3,13 @@ Cookies-warning
 
 Aviso de Cookies genérico en JS puro (no necesita JQuery ni similar).
 
-<h3><a href="http://htmlpreview.github.io/?https://github.com/carloscabo/cookies-warning/blob/master/demo.html" target="_blank">Demo de funcionamiento / testeo</a></h3>
+<h3><a href="http://htmlpreview.github.io/?https://github.com/carloscabo/cookies-warning/blob/master/demo.htm" target="_blank">Demo de funcionamiento / testeo</a></h3>
 
 ![Smaple snapshop](https://raw.github.com/carloscabo/cookies-warning/master/snapshot.png)
+
+<h3><a href="http://htmlpreview.github.io/?https://github.com/carloscabo/cookies-warning/blob/master/demo-auto-init.htm" target="_blank">Demo de funcionamiento auto-init/ estilo 2</a></h3>
+
+![Smaple snapshop](https://raw.github.com/carloscabo/cookies-warning/master/snapshot2.png)
 
 ## Requerimientos
 
@@ -140,6 +144,10 @@ Si usas JQuery puedes llamarlo dentro del un $.domready normal que se ejecutará
 Si se incluye el JS con la opción "autoloading" intentará hacer todo el proceso, con las opciones por defecto... está sería así:
 
     <script src="cookies-warning.js?auto_init"></script>
+    
+Si queremos especificar un idioma diferente del definido por defecto en el autoloading podemos pasarlo al final del path del script con `lang=XX`. Por ejemplo:
+
+    <script src="cookies-warning.js?auto_init&lang=en"></script>
 
 ## To-do
 
