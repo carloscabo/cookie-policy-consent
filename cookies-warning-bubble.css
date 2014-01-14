@@ -1,0 +1,55 @@
+#cookies-warning {
+  width: 288px;
+  padding: 32px 24px 28px 32px;
+  position: fixed;
+  left: 16px;
+  bottom: 16px;
+  z-index: 999;
+  background: #000;
+
+  border-top-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+}
+#cookies-warning p {
+  margin: 0 auto;
+  padding-top: 12px;
+  text-align: left;
+  border-top: 1px solid #666;
+  color: #999;
+}
+#cookies-warning p b {
+  font-weight: 700;
+  color: #fff;
+}
+#cookies-warning p a {
+  color: #fff;
+  text-decoration: underline;
+}
+#cookies-warning p a:hover {
+  color: #fff;
+}
+#cookies-warning svg {
+  display: none;
+}
+/*#cookies-warning a#cookies-warning-more-info {
+  text-decoration: underline;
+  color: #fff;
+}*/
+#cookies-warning a#cookies-warning-close {
+  height: 20px;
+  display: inline-block;
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  padding: 0 24px 0 0;
+  margin: 0;
+
+  text-decoration: underline;
+  line-height: 20px;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAQAAACRZI9xAAAARklEQVR4AWP4//8/A14IRDgVweSgDNwKQEowFaGJYQhg8jEEMdkYOjFNxLAf00ocjqTAFEy3EPYRSeFCOHQJxxHhmCacXgBUe0DOxthbswAAAABJRU5ErkJggg==) center right no-repeat;
+}
+
+/* CAUTION!: This rule must be the last */
+#cookies-warning {
+  display: block !important;
+}

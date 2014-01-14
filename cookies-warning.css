@@ -39,7 +39,7 @@
   fill: #335B90;
 }
 #cookies-warning a#cookies-warning-more-info {
-  margin-right: 10px;
+  /*margin-right: 10px;*/
   /*background: #dc042b;*/
   /*padding: 16px;*/
 
@@ -47,7 +47,7 @@
   color: #fff;
 }
 #cookies-warning a#cookies-warning-close {
-  margin-right: 10px;
+  /*margin-right: 10px;*/
   /*background: #ccc;*/
   /*padding: 16px;*/
 
