@@ -1,7 +1,7 @@
 /*
   Cookies warning function by Carlos Cabo 2014
   https://github.com/carloscabo/cookies-warning
-  v.1.0.4
+  v.1.0.6
 */
 ;var CW = {
 
@@ -11,14 +11,15 @@
   svg_bg: '#FFFFFF',
   svg_fg: '#000000',
   lang: 'es',
-  stylesheet: 'cookies-warning.css',
+  stylesheet: 'cookies-warning.css', // CSS path
+  locales: null, // Locales path
   before_element_ID: null,
   show_only_once: false,
 
   // Head
   hID: document.getElementsByTagName('head')[0],
 
-  // Currents script
+  // Scripts
   scripts: document.getElementsByTagName('script'),
   s: null, // Current script file
 
@@ -27,16 +28,16 @@
 
   init: function(params) {
 
-    // Current script name
-    if (CW.s == null) {
-      CW.s = CW.scripts[CW.scripts.length - 1].src; // Current script
-    }
-
     // Merge params if passed on init
     for (var attrname in params) {
       if (CW.hasOwnProperty(attrname)) {
         CW[attrname] = params[attrname];
       }
+    }
+
+    // Current script name
+    if (CW.s == null) {
+      CW.s = CW.scripts[CW.scripts.length - 1].src;
     }
 
     // Hostname / domain
@@ -45,12 +46,15 @@
 
     // Append advice
     if (!CW.check(CW.cookie_name)) {
-      CW.loadScript(CW.s.replace('.js','-locales.js'), function(){
-        // CW.appendLocales();
+      // If locales not set in params / vars look for it in the same path
+      // with the -locales.js extension...
+      if (CW.locales == null) {
+        CW.locales = CW.s.replace('.js','-locales.js');
+      }
+      CW.loadScript(CW.locales, function(){
         CW.appendCSS();
         CW.appendWarning();
       });
-      // CW.waitOnLoadEvent();
     }
   },
 
@@ -118,15 +122,6 @@
     CW.hID.appendChild(lnk);
   },
 
-  // Waits for external CSS and JS to be loaded
-  // Add to the queue without overwriting window.onload
-  // Not using, trying DOMReady instead
-  /*waitOnLoadEvent: function () {
-    window.addEventListener ?
-    window.addEventListener("load",CW.appendWarning,false) :
-    window.attachEvent && window.attachEvent("onload",CW.appendWarning);
-  },*/
-
   // Hides warning
   removeWarning: function() {
     CW.set(CW.cookie_name, true, 999);
@@ -184,20 +179,16 @@
     CW.set(c_name,'', 0);
   },
 
-  // From https://gist.github.com/dciccale/4087856
-  DOMReady: function(a,b,c){b=document,c='addEventListener';b[c]?b[c]('DOMContentLoaded',a):window.attachEvent('onload',a)},
-
-
   // http://www.nczonline.net/blog/2009/07/28/the-best-way-to-load-external-javascript/
   loadScript: function (url, callback){
     var
-      script = document.createElement("script");
+      script = document.createElement('script');
 
-    script.type = "text/javascript";
+    script.type = 'text/javascript';
     if (script.readyState){  //IE
       script.onreadystatechange = function(){
-        if (script.readyState == "loaded" ||
-          script.readyState == "complete"){
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete'){
           script.onreadystatechange = null;
           callback();
         }
@@ -208,12 +199,13 @@
       };
     }
     script.src = url;
-    document.getElementsByTagName("head")[0].appendChild(script);
+    document.getElementsByTagName('head')[0].appendChild(script);
   },
 
   // Auto-initializes the CW script if has param '?auto_init'
   autoInit: function () {
-    CW.s = CW.scripts[CW.scripts.length - 1].src; // Current script
+    // Current script
+    CW.s = CW.scripts[CW.scripts.length - 1].src;
 
     // If has autoinit parameter
     if (CW.s.match(/\?auto_init/)) {
