@@ -17,7 +17,9 @@ Aviso de Cookies genérico en JS puro (no necesita JQuery ni similar).
 `cookies-warning-locales.js`  
 `cookies-warning.css`
 
-Solo es necesario incluir el `cookies-warning.js`, los otros dos son automáticamente incluídos desde el primero.
+**Solo es necesario incluir el `cookies-warning.js`, los otros dos son automáticamente incluídos desde el primero.**
+
+`<script src="/path/cookies-warning.js"></script>`
 
 ## Abstract
 
@@ -27,28 +29,32 @@ Se ha usado un **_append_** de JS ya que así se evita que los buscadores indexe
 
 ## Internacionalización
 
-Hay un fichero a parte con el string que se imprime para cada idioma dependiendo del código que se le pase. Si no se le pasa ninguno buscará por defecto el string correspondiente a 'es'.
+Las internacionalizaciones se encuentran en el fichero:  
+`cookies-warning-locales.js`
 
-Los language codes tienen un límite de 10 caracteres.  
+Hay un fichero a parte con el string que se imprime para cada idioma dependiendo del código que se le pase. **Si no se le pasa ningún código de idioma cogerá por defecto el primer idioma del fichero de locales**.
+
+Se recomienda que los language codes sean en el siguiente formato.  
 **es**  
 **es-ES**  
 ...  
 **51-AAA-bkk** _(este es el formato más largo en los ISO)_  
 
-Las internacionalizaciones se encuentran en el fichero:  
-`cookies-warning-locales.js`
-
-Así que si se le pasa en la inicialización un string de una longitud superior a 10 chars asume que le estamos pasando el contenido del mensaje de warning. Este contenido de mensaje de warning se rodeará automáticamente de `<p> ... </p>`.
-
 Más sinfo sobre language codes:  
 <http://msdn.microsoft.com/en-us/library/ee825488(v=cs.20).aspx>  
 <http://en.wikipedia.org/wiki/Language_code>
 
-## SVG
+## Mensaje personalizado SIN usar el fichero de locales
 
-Para hacer el iconito de _información_ he usado un SVG inline. Es lo más pequeño que se me ha ocurrido (dos círculos y un cuadrado). La ventaja del SVG es que por CSS también se puede cambiar el fondo y el color de la "i" (ver estilos en `cookies-warning.css`).
+Si nos interesa pasar un mensaje personalizado para el aviso, SIN usar el fichero de locales, podemos hacerlo empleando el parámetro `msg` en la inicialización de CW de la siguiente forma:
 
-La desventaja es que en IE8 no se vé, pero tampoco pasa nada.
+    <script type="text/javascript">
+      window.onload = function() {
+        CW.init({
+          msg: 'Este es mi mensaje personal <a href="#" id="cookies-warning-close">Acept</a>'
+        });
+      };
+    </script>
 
 ## Donde se inserta el aviso
 
@@ -110,12 +116,12 @@ Pasándole directamente un string:
     <script type="text/javascript">
       window.onload = function() {
         CW.init({
-          lang:'<b>Aviso de cookies</b><br>Mensaje personalizado<a href="/es/politica-cookies">modificar la configuración.</a>'
+          msg: '<b>Aviso de cookies</b><br>Mensaje personalizado<a href="/es/politica-cookies">modificar la configuración.</a>'
         });
       };
     </script>
 
-Por defecto busca la hoja de estilos en el mismo path que esté la propia librería en JS pero podemos poner un path personalizado cuando la inizializamos:
+Por defecto busca la hoja de estilos y el JS de locales en el mismo path que esté la propia librería en JS pero podemos poner un path personalizado cuando la inizializamos:
 
 Pasándole directamente un string:
 
@@ -123,12 +129,13 @@ Pasándole directamente un string:
       window.onload = function() {
         CW.init({
           lang:'es',
-          stylesheet: '/assets/css/cookies-warning.css'
+          stylesheet: '/assets/css/cookies-warning.css',
+          locales: '/assets/js/cookies-warning-locales.js'
         });
       };
     </script>
 
-Si usas JQuery puedes llamarlo dentro del un $.domready normal que se ejecutará cuando esté listo el DOM de la página en vez de esperar a que se cargue la página completa, esto es más adecuado que emplear el `window.onload`.
+Si usas JQuery puedes llamarlo dentro del un `$.domready` normal que se ejecutará cuando esté listo el DOM de la página en vez de esperar a que se cargue la página completa, esto es más adecuado que emplear el `window.onload`.
 
     <script type="text/javascript">
       $(document).ready(function() {
@@ -149,12 +156,12 @@ Si queremos especificar un idioma diferente del definido por defecto en el autol
 
     <script src="cookies-warning.js?auto_init&lang=en"></script>
 
+## SVG
+
+Para hacer el iconito de _información_ he usado un SVG inline. Es lo más pequeño que se me ha ocurrido (dos círculos y un cuadrado). La ventaja del SVG es que por CSS también se puede cambiar el fondo y el color de la "i" (ver estilos en `cookies-warning.css`).
+
+La desventaja es que en IE8 no se vé, pero tampoco pasa nada.
+
 ## To-do
 
-HAcer que se pueda especificar el idioma en el modo `autoloading`.
-
 Añadir soporte para que el evento de onclick en el botón de cerrar no machaque otros eventos como por ejemplo los de **Google Tag Manager**.
-
-## Known bugs
-
-El IE8 no soporta `SVG` :-(

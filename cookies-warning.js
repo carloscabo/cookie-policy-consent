@@ -1,7 +1,7 @@
 /*
   Cookies warning function by Carlos Cabo 2014
   https://github.com/carloscabo/cookies-warning
-  v.1.0.6
+  v.1.0.8
 */
 ;var CW = {
 
@@ -10,7 +10,8 @@
   cookie_name: 'cookies-warning-accepted',
   svg_bg: '#FFFFFF',
   svg_fg: '#000000',
-  lang: 'es',
+  lang: null,
+  msg: null, // Custom message
   stylesheet: 'cookies-warning.css', // CSS path
   locales: null, // Locales path
   before_element_ID: null,
@@ -28,33 +29,39 @@
 
   init: function(params) {
 
-    // Merge params if passed on init
-    for (var attrname in params) {
-      if (CW.hasOwnProperty(attrname)) {
-        CW[attrname] = params[attrname];
-      }
-    }
-
-    // Current script name
-    if (CW.s == null) {
-      CW.s = CW.scripts[CW.scripts.length - 1].src;
-    }
-
-    // Hostname / domain
-    var hn = window.location.host;
-    this.domain = hn.substring(hn.lastIndexOf(".", hn.lastIndexOf(".") - 1) + 1);
-
     // Append advice
     if (!CW.check(CW.cookie_name)) {
+
+      // Merge params if passed on init
+      for (var attrname in params) {
+        if (CW.hasOwnProperty(attrname)) {
+          CW[attrname] = params[attrname];
+        }
+      }
+
+      // Current script name
+      if (CW.s == null) {
+        CW.s = CW.scripts[CW.scripts.length - 1].src;
+      }
+
+      // Hostname / domain
+      var hn = window.location.host;
+      this.domain = hn.substring(hn.lastIndexOf(".", hn.lastIndexOf(".") - 1) + 1);
+
       // If locales not set in params / vars look for it in the same path
       // with the -locales.js extension...
-      if (CW.locales == null) {
-        CW.locales = CW.s.replace('.js','-locales.js');
-      }
-      CW.loadScript(CW.locales, function(){
+      if (CW.msg !== null) {
         CW.appendCSS();
         CW.appendWarning();
-      });
+      } else {
+        if (CW.locales == null) {
+          CW.locales = CW.s.replace('.js','-locales.js');
+        }
+        CW.loadScript(CW.locales, function(){
+          CW.appendCSS();
+          CW.appendWarning();
+        });
+      }
     }
   },
 
@@ -65,15 +72,18 @@
       d =    document.createElement('div'),
       body = document.getElementsByTagName('body')[0];
 
-    // If passing long string
-    if (CW.lang.length > 10) {
-      t = CW.lang;
-    } else {
-      t = CW.Locales[CW.lang];
+    // If NOT passing custom message
+    if (CW.msg == null) {
+      if (typeof CW.Locales[CW.lang] === 'undefined') {
+        // If locale undefined assign first one
+        CW.msg = CW.Locales[Object.keys(CW.Locales)[0]];
+      } else {
+        CW.msg = CW.Locales[CW.lang];
+      }
     }
 
     // Create MSG
-    h = '<p><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="32px" height="32px"><circle fill="'+CW.svg_bg+'" cx="16" cy="16" r="15" class="bg" /><circle fill="'+CW.svg_fg+'" cx="16" cy="7.216" r="2.733" class="fg"/><rect  fill="'+CW.svg_fg+'" x="13.267" y="12.417" width="5.466" height="14.938" class="fg"/></svg>'+t+'</p>';
+    h = '<p><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="32px" height="32px"><circle fill="'+CW.svg_bg+'" cx="16" cy="16" r="15" class="bg" /><circle fill="'+CW.svg_fg+'" cx="16" cy="7.216" r="2.733" class="fg"/><rect  fill="'+CW.svg_fg+'" x="13.267" y="12.417" width="5.466" height="14.938" class="fg"/></svg>'+CW.msg+'</p>';
     d.setAttribute('id', CW.cookie_warning_id);
     d.setAttribute('style', 'display:none;');
     d.innerHTML =  h;
