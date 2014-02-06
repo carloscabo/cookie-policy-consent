@@ -1,5 +1,8 @@
 CW.Locales = {
-  es: '<b>Este Portal Web hace uso de cookies.</b><br>Si continúa en nuestra web, navega por las distintas secciones o cierra esta advertencia está aceptando implícitamente la instalación y uso de las cookies en nuestro sitio. Puede consultar la <a href="/es/politica-cookies" id="cookies-warning-more-info">información sobre las cookies que empleamos</a>. <a href="#" id="cookies-warning-close">Aceptar</a>',
-  en: '<b>This website makes use of cookies.</b><br>Continuing on our website, browsing through the different sections or closing this warning means implicitly accepting the installation and use of cookies on our site. You can <a href="/en/politica-cookies" id="cookies-warning-more-info">view information about the cookies we use</a>. <a href="#" id="cookies-warning-close">Acept</a>',
-  pt: '<b>Este Portal faz uso de cookies.</b><br>Continuando em nosso site, navegue pelas diferentes secções ou fechar este aviso está implicitamente aceitando a instalação e utilização de cookies no nosso site. Você pode <a href="/pt/politica-cookies" id="cookies-warning-more-info">ver informações sobre os cookies que usamos</a>. <a href="#" id="cookies-warning-close">Acept</a>'
+  // ES
+  es: '<b>Esta web utiliza cookies</b><br>Esta web utiliza cookies con fines funcionales y analíticos. Si navegas por ella, estarás aceptando su uso. Puedes consultar todos los detalles de nuestra Política de Cookies <a href="/politica-cookies-es" id="cookies-warning-more-info">aquí</a>. <a href="#" id="cookies-warning-close"></a>',
+  // EN
+  en: '<b>This website uses cookies</b><br>This website uses cookies for functional and analytical purposes. By visiting this website, you are accepting their use. You can consult all the details of our Cookies Policy <a href="/politica-cookies-en" id="cookies-warning-more-info">here</a>. <a href="#" id="cookies-warning-close"></a>',
+  // PT
+  pt: '<b>Este site utiliza cookies</b><br>Este site utiliza cookies com finalidades funcionais e analíticas. Se você navegar por ele, estará aceitando o seu uso. Você pode consultar todos os detalhes da nossa Política de Cookies <a href="/politica-cookies-pt" id="cookies-warning-more-info">aqui</a>. <a href="#" id="cookies-warning-close"></a>'
 };
