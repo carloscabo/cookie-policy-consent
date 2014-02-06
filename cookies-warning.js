@@ -25,7 +25,7 @@
   s: null, // Current script file
 
   // Cureent domain / host
-  domain: '',
+  domain: null,
 
   init: function(params) {
 
@@ -45,8 +45,9 @@
       }
 
       // Hostname / domain
-      var hn = window.location.host;
-      this.domain = hn.substring(hn.lastIndexOf(".", hn.lastIndexOf(".") - 1) + 1);
+      if (CW.domain == null) {
+        CW.domain = window.location.hostname;
+      }
 
       // If locales not set in params / vars look for it in the same path
       // with the -locales.js extension...

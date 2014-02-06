@@ -89,6 +89,26 @@ En algunos sitios asumen que el aviso solo debe mostrarse una primera vez y que 
       };
     </script>
 
+## Especificar un dominio y todos sus subdominios
+
+Por defecto las cookies que se escriben se asocian al dominio que devuelve `window.location.hostname`. Esto hace que el aviso de cookies pueda estar asociado a un **subdominio**.
+
+Imaginemos que entramos en `http://subdominio.dominio.com` y aceptamos el aviso de cookies, cuando entremos en el root del site `http://dominio.com` al estar la cookie asociada al subdominio **el aviso nos volverá a aparecer y deberemos volver a aceptarlo**.
+
+Si queremos que el aviso de cookies se aplique a lo largo de todo el site, lo ideal es **forzar el dominio cuando inicializamos el aviso** de la siguiente forma.
+
+    <script type="text/javascript">
+      window.onload = function() {
+        CW.init({
+          lang: 'es',
+          doamin: 'dominio.co.uk', // Forzar dominio padre de las cookies
+          before_element_ID: 'page_container',
+          show_only_once: true
+        });
+      };
+    </script>
+
+
 ## Uso
 
 Pasándole el código de lenguaje:
