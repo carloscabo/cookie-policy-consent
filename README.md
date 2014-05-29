@@ -89,6 +89,8 @@ En algunos sitios asumen que el aviso solo debe mostrarse una primera vez y que 
       };
     </script>
 
+Ten en cuenta que esta funcionalidad podría no funcionar correctamente en entornos locales (usando localhost:xxxx para pruebas, por ejemplo) ya que puede encontrar problemas para establecer el dominio al que asociar la cookie. Estos problemas deberían solucionarse si utilizas alguna herramienta que te permita utilizar nombres de dominio en local del tipo "aplication.dev" como [pow](http://pow.cx/ "pow") o directamente al publicar en un entorno de producción o pruebas.
+
 ## Especificar un dominio y todos sus subdominios
 
 Por defecto las cookies que se escriben se asocian al dominio que devuelve `window.location.hostname`. Esto hace que el aviso de cookies pueda estar asociado a un **subdominio**.
@@ -165,13 +167,13 @@ Si usas JQuery puedes llamarlo dentro del un `$.domready` normal que se ejecutar
         });
       });
     </script>
-    
+
 ## Autoloading
 
 Si se incluye el JS con la opción "autoloading" intentará hacer todo el proceso, con las opciones por defecto... está sería así:
 
     <script src="cookies-warning.js?auto_init"></script>
-    
+
 Si queremos especificar un idioma diferente del definido por defecto en el autoloading podemos pasarlo al final del path del script con `lang=XX`. Por ejemplo:
 
     <script src="cookies-warning.js?auto_init&lang=en"></script>
