@@ -157,6 +157,16 @@ Pasándole directamente un string:
       };
     </script>
 
+Si no queremos cargar los estilos desde la libreria porque ya estén cargados en la web (assetes pipeline de Ruby on Rails por ejemplo):
+
+    <script type="text/javascript">
+      window.onload = function() {
+        CW.init({
+          stylesheet: false
+        });
+      };
+    </script>
+
 Si usas JQuery puedes llamarlo dentro del un `$.domready` normal que se ejecutará cuando esté listo el DOM de la página en vez de esperar a que se cargue la página completa, esto es más adecuado que emplear el `window.onload`.
 
     <script type="text/javascript">
