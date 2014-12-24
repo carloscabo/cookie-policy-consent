@@ -1,7 +1,7 @@
 /*
   Cookies warning function by Carlos Cabo 2014
   https://github.com/carloscabo/cookies-warning
-  v.1.0.8
+  v.1.0.9
 */
 ;var CW = {
 
@@ -124,13 +124,15 @@
 
   // Appends default CSS stylesheet
   appendCSS: function () {
-    var
-      lnk = document.createElement('link');
-    lnk.type  = 'text/css';
-    lnk.rel   = 'stylesheet';
-    lnk.media = 'screen';
-    lnk.href  = CW.stylesheet;
-    CW.hID.appendChild(lnk);
+    if (CW.stylesheet) {
+      var
+        lnk = document.createElement('link');
+      lnk.type  = 'text/css';
+      lnk.rel   = 'stylesheet';
+      lnk.media = 'screen';
+      lnk.href  = CW.stylesheet;
+      CW.hID.appendChild(lnk);
+    }
   },
 
   // Hides warning
