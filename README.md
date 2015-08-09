@@ -226,7 +226,7 @@ Si se incluye el JS con la opción "autoloading" intentará hacer todo el proces
 Si queremos especificar un idioma diferente del definido por defecto en el autoloading podemos pasarlo al final del path del script con `lang=XX`. Por ejemplo:
 
 ````html
-<script src="cookie-policy-consent.js?auto_init&lang=en"></script>
+<script src="cookie-policy-consent.js?auto_init&amp;lang=en"></script>
 ````
 
 ## To-do
