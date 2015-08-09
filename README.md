@@ -14,15 +14,15 @@ Aviso de Cookies genérico en JS puro (no necesita JQuery ni similar).
 ## Requerimientos
 
 ````javascript
-cookies-policy-consent.js
-cookies-policy-consent-fn.js
-cookies-policy-consent-locales.js
-cookies-policy-consent.css
+cookie-policy-consent.js
+cookie-policy-consent-fn.js
+cookie-policy-consent-locales.js
+cookie-policy-consent.css
 ````
 
-**Solo es necesario incluir el `cookies-policy-consent.js`, los otros ficheros son automáticamente incluídos desde el primero SOLO si hace falta.**
+**Solo es necesario incluir el** `cookie-policy-consent.js` **, los otros ficheros son automáticamente incluídos desde el primero SOLO si hace falta.**
 
-`<script src="/path/cookies-policy-consent.js"></script>`
+`<script src="/path/cookie-policy-consent.js"></script>`
 
 ## Abstract
 
@@ -33,7 +33,7 @@ Se ha usado un **_append_** de JS ya que así se evita que los buscadores indexe
 ## Internacionalización
 
 Las internacionalizaciones se encuentran en el fichero:
-`cookies-policy-consent-locales.js`
+`cookie-policy-consent-locales.js`
 
 Hay un fichero a parte con el string que se imprime para cada idioma dependiendo del código que se le pase. **Si no se le pasa ningún código de idioma cogerá por defecto el primer idioma del fichero de locales**.
 
@@ -124,9 +124,11 @@ Si queremos que el aviso de cookies se aplique a lo largo de todo el site, lo id
 ````javascript
 <script type="text/javascript">
   window.onload = function() {
+
+    CPC.fn.host = 'dominio.co.uk';
+    //...
     CPC.init({
       lang: 'es',
-      host: 'dominio.co.uk', // Forzar dominio padre de las cookies
       before_element_ID: 'page_container',
       show_only_once: true
     });
