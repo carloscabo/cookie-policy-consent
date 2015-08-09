@@ -5,11 +5,11 @@ Aviso de Cookies genérico en JS puro (no necesita JQuery ni similar).
 
 <h3>Demo de funcionamiento / testeo</h3>
 
-![Smaple snapshop](https://github.com/carloscabo/cookie-policy-consent/master/snapshot.png)
+![Smaple snapshop](https://raw.githubusercontent.com/carloscabo/cookie-policy-consent/master/snapshot.png)
 
 <h3>Demo de funcionamiento auto-init/ estilo 2</h3>
 
-![Smaple snapshop](https://github.com/carloscabo/cookie-policy-consent/master/snapshot2.png)
+![Smaple snapshop](https://raw.githubusercontent.com/carloscabo/cookie-policy-consent/master/snapshot2.png)
 
 ## Requerimientos
 
