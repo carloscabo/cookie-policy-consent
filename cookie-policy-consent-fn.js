@@ -32,7 +32,10 @@ CPC.fn = {
 
     CPC.fn.host = window.location.hostname;
 
-    CPC.fn.appendCSS();
+    // Solo cargamos los estilos si el usuario no lo ha desahilitado
+    if (CPC.data.css !== false) {
+      CPC.fn.appendCSS();
+    }
 
     // If a custom msg was set dont insert locales
     if (CPC.fn.params.msg !== null) {
