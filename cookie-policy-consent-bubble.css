@@ -1,4 +1,4 @@
-#cookies-warning {
+#cookie-policy-consent {
   width: 288px;
   padding: 32px 24px 28px 32px;
   position: fixed;
@@ -10,32 +10,32 @@
   border-top-left-radius: 40px;
   border-bottom-right-radius: 40px;
 }
-#cookies-warning p {
+#cookie-policy-consent p {
   margin: 0 auto;
   padding-top: 12px;
   text-align: left;
   border-top: 1px solid #666;
   color: #999;
 }
-#cookies-warning p b {
+#cookie-policy-consent p b {
   font-weight: 700;
   color: #fff;
 }
-#cookies-warning p a {
+#cookie-policy-consent p a {
   color: #fff;
   text-decoration: underline;
 }
-#cookies-warning p a:hover {
+#cookie-policy-consent p a:hover {
   color: #fff;
 }
-#cookies-warning svg {
+#cookie-policy-consent svg {
   display: none;
 }
-/*#cookies-warning a#cookies-warning-more-info {
+/*#cookie-policy-consent a#cookie-policy-consent-more-info {
   text-decoration: underline;
   color: #fff;
 }*/
-#cookies-warning a#cookies-warning-close {
+#cookie-policy-consent a#cookie-policy-consent-close {
   height: 20px;
   display: inline-block;
   position: absolute;
@@ -50,6 +50,6 @@
 }
 
 /* CAUTION!: This rule must be the last */
-#cookies-warning {
+#cookie-policy-consent {
   display: block !important;
 }

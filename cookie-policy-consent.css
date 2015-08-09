@@ -1,4 +1,4 @@
-#cookies-warning {
+#cookie-policy-consent {
   width: 100%;
   padding: 16px 0;
   position: fixed;
@@ -7,7 +7,7 @@
   border-top: 1px solid #fff;
   background: #335B90;
 }
-#cookies-warning p {
+#cookie-policy-consent p {
   position: relative;
   margin: 0 auto;
   padding: 0 10px 0 50px;
@@ -15,30 +15,30 @@
   text-align: left;
   color: #fff;
 }
-#cookies-warning p b {
+#cookie-policy-consent p b {
   font-weight: 700;
 }
-#cookies-warning p a {
+#cookie-policy-consent p a {
   color: #fff;
   text-decoration: underline;
 }
-#cookies-warning p a:hover {
+#cookie-policy-consent p a:hover {
   color: #fff;
 }
-#cookies-warning svg {
+#cookie-policy-consent svg {
   position: absolute;
   top: -2px;
   left: 10px;
   float: left;
   margin-right: 8px;
 }
-#cookies-warning svg .bg {
+#cookie-policy-consent svg .bg {
   fill: #FFFFFF;
 }
-#cookies-warning svg .fg {
+#cookie-policy-consent svg .fg {
   fill: #335B90;
 }
-#cookies-warning a#cookies-warning-more-info {
+#cookie-policy-consent a#cookie-policy-consent-more-info {
   /*margin-right: 10px;*/
   /*background: #dc042b;*/
   /*padding: 16px;*/
@@ -46,7 +46,7 @@
   text-decoration: underline;
   color: #fff;
 }
-#cookies-warning a#cookies-warning-close {
+#cookie-policy-consent a#cookie-policy-consent-close {
   /*margin-right: 10px;*/
   /*background: #ccc;*/
   /*padding: 16px;*/
@@ -56,6 +56,6 @@
 }
 
 /* CAUTION!: This rule must be the last */
-#cookies-warning {
+#cookie-policy-consent {
   display: block !important;
 }

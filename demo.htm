@@ -21,28 +21,33 @@
     }
   </style>
 
-  <script src="cookies-warning.js"></script>
+  <script src="cookie-policy-consent.js"></script>
   <script type="text/javascript">
-    CW.init({
-      // lang: 'es',
-      stylesheet: 'cookies-warning-bubble.css',
-      // locales: '/js/cookies-warning-locales.js',
-      // show_only_once: true
-      // before_element_ID: 'ELEMENT-ID',
-    });
+
+    // Alternativamente puedes usar $(document).ready();
+    window.onload = function() {
+      // La magia aquí!
+
+      CPC.init({
+        // lang: 'en',
+        // show_only_once: true,
+        // click_anywhere: true, // Force closing clinking anywhere
+        // msg: '<b>Custom cookie msg without locales</b>.<a href="#" id="cookie-policy-consent-close">Aceptar</a>',
+        // before_element_ID: 'container',
+      });
+
+    };
 </script>
 </head>
 <body>
-<p>
-  More info at:<br>
-  <a href="https://github.com/carloscabo/cookies-warning">https://github.com/carloscabo/cookies-warning</a></p>
+<div id="container">
+  <p>
+    More info at:<br>
+    <a href="https://github.com/carloscabo/cookies-warning">https://github.com/carloscabo/cookies-warning</a></p>
 
-  <p><a href="#" onclick="CW.del();">Eliminar la cookie / reiniciar demo</a></p>
+    <p><a href="#" onclick='document.cookie = "cookie-policy-consent-accepted=; expires=Thu, 01 Jan 2000 00:00:00 GMT";'>Eliminar la cookie / reiniciar demo</a></p>
 
-<!--
-  Now the CSS and the cookies-warning-locales.js are automatically injected by the JS to avoid an extra request <link rel="stylesheet" href="cookies-warning.css" type="text/css">
--->
-
+</div>
 
 </body>
 </html>
