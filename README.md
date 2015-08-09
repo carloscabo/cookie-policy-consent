@@ -13,10 +13,12 @@ Aviso de Cookies genérico en JS puro (no necesita JQuery ni similar).
 
 ## Requerimientos
 
-`cookies-policy-consent.js`
-`cookies-policy-consent-fn.js`
-`cookies-policy-consent-locales.js`
-`cookies-policy-consent.css`
+````javascript
+cookies-policy-consent.js
+cookies-policy-consent-fn.js
+cookies-policy-consent-locales.js
+cookies-policy-consent.css
+````
 
 **Solo es necesario incluir el `cookies-policy-consent.js`, los otros ficheros son automáticamente incluídos desde el primero SOLO si hace falta.**
 
