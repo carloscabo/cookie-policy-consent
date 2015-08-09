@@ -1,6 +1,6 @@
 /*
   Cookie Policy Consent by Carlos Cabo 2015
-  https://github.com/carloscabo/cookies-warning
+  https://github.com/carloscabo/cookie-policy-consent
   v.2.0.0
 */
 ;'use strict';
