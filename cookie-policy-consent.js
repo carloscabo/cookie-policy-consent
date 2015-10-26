@@ -1,7 +1,7 @@
 /*
   Cookie Policy Consent by Carlos Cabo 2015
   https://github.com/carloscabo/cookie-policy-consent
-  v.2.0.0
+  v.2.0.1
 */
 ;'use strict';
 var CPC = {
@@ -9,6 +9,7 @@ var CPC = {
   // Init params
   settings: {
     cookie_name: 'cookie-policy-consent-accepted',
+    load_external_files: true
   },
   data: {
     s: { // Current scripts
@@ -31,9 +32,14 @@ var CPC = {
       CPC.data.s.params = CPC.data.s.path.split('?')[1];
       CPC.data.s.fn = CPC.data.s.name.replace('.js','-fn.js');
 
-      CPC.loadScript(CPC.data.s.fn, function(){
+      if (CPC.settings.load_external_files) {
+        CPC.loadScript(CPC.data.s.fn, function(){
+          CPC.fn.postInit(params);
+        });
+      } else {
         CPC.fn.postInit(params);
-      });
+      }
+
     }
   },
 

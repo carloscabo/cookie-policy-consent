@@ -191,13 +191,13 @@ Por defecto busca la hoja de estilos y el JS de locales en el mismo path que est
 </script>
 ````
 
-Si no queremos cargar los estilos desde la libreria porque ya estén cargados en la web (assetes pipeline de Ruby on Rails por ejemplo):
+Si no queremos cargar **ni los estilos, ni el JS adicional, ni los locales desde la libreria porque ya estén cargados en la web** ( porque estos ficheros ya estén incluídos en el assets pipeline de Ruby on Rails por ejemplo)
 
 ````javascript
 <script type="text/javascript">
   window.onload = function() {
 
-    CPC.data.css = false;
+    CPC.settings.load_external_files = false;
 
     CPC.init({
       lang:'es'

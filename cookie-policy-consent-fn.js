@@ -20,20 +20,22 @@ CPC.fn = {
       }
     }
 
-    // Set default locales path
-    if (CPC.data.s.locales === null) {
-      CPC.data.s.locales = CPC.data.s.name.replace('.js','-locales.js');
-    }
-
-    // Set default CSS path
-    if (CPC.data.css === null) {
-      CPC.data.css = CPC.data.s.name.replace('.js','.css');
-    }
-
     CPC.fn.host = window.location.hostname;
 
-    // Solo cargamos los estilos si el usuario no lo ha desahilitado
-    if (CPC.data.css !== false) {
+
+
+    // Set default CSS path
+    // We only request CSS file if its enabled
+    if (CPC.settings.load_external_files) {
+      // Set default locales path if not set by user
+      if (CPC.data.s.locales === null) {
+        CPC.data.s.locales = CPC.data.s.name.replace('.js','-locales.js');
+      }
+      // Set default CSS if not set by user
+      if (CPC.data.css === null) {
+        CPC.data.css = CPC.data.s.name.replace('.js','.css');
+      }
+
       CPC.fn.appendCSS();
     }
 
@@ -42,9 +44,13 @@ CPC.fn = {
       CPC.fn.appendWarning();
     } else {
       // First load locales then append cookie advice
-      CPC.loadScript(CPC.data.s.locales, function(){
+      if (CPC.settings.load_external_files) {
+        CPC.loadScript(CPC.data.s.locales, function(){
+          CPC.fn.appendWarning();
+        });
+      } else {
         CPC.fn.appendWarning();
-      });
+      }
     }
   },
 
