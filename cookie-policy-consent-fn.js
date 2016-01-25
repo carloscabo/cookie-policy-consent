@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict';
 CPC.fn = {
 
   // Init params
@@ -7,6 +7,7 @@ CPC.fn = {
     show_only_once: false,
     click_anywhere: false,
     before_element_ID: null,
+    expire_days: 999,
     msg: null // Custom text not in locale
   },
   host: null,
@@ -21,8 +22,6 @@ CPC.fn = {
     }
 
     CPC.fn.host = window.location.hostname;
-
-
 
     // Set default CSS path
     // We only request CSS file if its enabled
@@ -90,7 +89,7 @@ CPC.fn = {
 
     // Show cookie-warning only first time
     if (CPC.fn.params.show_only_once) {
-      CPC.fn.set(CPC.settings.cookie_name, true, 999);
+      CPC.fn.set(CPC.settings.cookie_name, true, CPC.fn.params.expire_days);
     }
 
     // Hide when clicked
@@ -125,7 +124,7 @@ CPC.fn = {
 
   // Hides warning
   removeWarning: function() {
-    CPC.fn.set(CPC.settings.cookie_name, true, 999);
+    CPC.fn.set(CPC.settings.cookie_name, true, CPC.fn.params.expire_days);
     var el = document.getElementById(CPC.fn.params.cookie_warning_id);
     el.outerHTML = '';
   },

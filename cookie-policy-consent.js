@@ -1,9 +1,8 @@
 /*
   Cookie Policy Consent by Carlos Cabo 2015
   https://github.com/carloscabo/cookie-policy-consent
-  v.2.0.1
+  v.2.0.2
 */
-;'use strict';
 var CPC = {
 
   // Init params

@@ -162,6 +162,18 @@ Pasándole el código de lenguaje desde rails:
 </script>
 ````
 
+Especificar una duración de la cookie (por defecto 999 días desde la fecha actual):
+
+````javascript
+<script type="text/javascript">
+  window.onload = function() {
+    CPC.init({
+      expire_days: 2
+    });
+  };
+</script>
+````
+
 Pasándole directamente un string:
 
 ````javascript
@@ -213,7 +225,8 @@ Si usas JQuery puedes llamarlo dentro del un `$.domready` normal que se ejecutar
   $(document).ready(function() {
     CPC.init({
       lang: 'es',
-      before_element_ID: 'page_container'
+      before_element_ID: 'page_container',
+      expire_days: 3 // Días para que expire la cookie
     });
   });
 </script>
