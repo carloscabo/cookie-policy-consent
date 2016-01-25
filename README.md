@@ -249,3 +249,7 @@ Si queremos especificar un idioma diferente del definido por defecto en el autol
 ## To-do
 
 Añadir soporte para que el evento de onclick en el botón de cerrar no machaque otros eventos como por ejemplo los de **Google Tag Manager**.
+
+## Changelog
+
+- 2016 / 01 / 25 Añadido parámetro `expire_days`, para la duracción de la cookie.
