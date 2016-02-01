@@ -28,9 +28,16 @@
     window.onload = function() {
       // La magia aquí!
 
+      // Custom FULL path for CSS
+      CPC.data.css = 'cookie-policy-consent-bubble.css';
+
+      // Custom FULL path for locales file
+      CPC.data.script_locales = 'cookie-policy-consent-locales.js';
+
       CPC.init({
         // lang: 'en',
         // show_only_once: true,
+        // load_external_files: false, // Disable to autoload locales and CSS
         // click_anywhere: true, // Force closing clinking anywhere
         // msg: '<b>Custom cookie msg without locales</b>.<a href="#" id="cookie-policy-consent-close">Aceptar</a>',
         // expire_days: 999,
@@ -46,7 +53,7 @@
     More info at:<br>
     <a href="https://github.com/carloscabo/cookie-policy-consent">https://github.com/carloscabo/cookie-policy-consent</a></p>
 
-    <p><a href="#" onclick='document.cookie = "cookie-policy-consent-accepted=; expires=Thu, 01 Jan 2000 00:00:00 GMT";'>Eliminar la cookie / reiniciar demo</a></p>
+    <p><a href="#" onclick='CPC.del();'>Eliminar la cookie / reiniciar demo</a></p>
 
 </div>
 

@@ -15,7 +15,6 @@ Aviso de Cookies genérico en JS puro (no necesita JQuery ni similar).
 
 ````javascript
 cookie-policy-consent.js
-cookie-policy-consent-fn.js
 cookie-policy-consent-locales.js
 cookie-policy-consent.css
 ````
@@ -125,7 +124,7 @@ Si queremos que el aviso de cookies se aplique a lo largo de todo el site, lo id
 <script type="text/javascript">
   window.onload = function() {
 
-    CPC.fn.host = 'dominio.co.uk';
+    CPC.host = 'dominio.co.uk';
     //...
     CPC.init({
       lang: 'es',
