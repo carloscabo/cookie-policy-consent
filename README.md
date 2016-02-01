@@ -192,11 +192,12 @@ Por defecto busca la hoja de estilos y el JS de locales en el mismo path que est
 <script type="text/javascript">
   window.onload = function() {
 
-    CPC.data.css = '/assets/css/cookies-warning.css';
-    CPC.data.s.locales = '/assets/js/cookies-warning-locales.js';
+    CPC.data.css = '/assets/css/cookie-policy-consent-bubble.css';
+    CPC.data.script_locales = '/assets/js/cookie-policy-consent-locales.js';
+
     //...
     CPC.init({
-      lang:'es'
+      lang: $('html').attr('lang') // Coge el idioma del tag HTML
     });
   };
 </script>
@@ -207,11 +208,9 @@ Si no queremos cargar **ni los estilos, ni el JS adicional, ni los locales desde
 ````javascript
 <script type="text/javascript">
   window.onload = function() {
-
-    CPC.settings.load_external_files = false;
-
     CPC.init({
-      lang:'es'
+      lang:'es',
+      load_external_files: false
     });
   };
 </script>
@@ -231,6 +230,26 @@ Si usas JQuery puedes llamarlo dentro del un `$.domready` normal que se ejecutar
 </script>
 ````
 
+## Todas las opciones disponibles en la inicialización
+
+````javascript
+<script type="text/javascript">
+  $(document).ready(function() {
+    CPC.init({
+      CPC.init({
+        // lang: 'en',
+        // show_only_once: true,
+        // load_external_files: false, // Disable to autoload locales and CSS
+        // click_anywhere: true, // Force closing clicking anywhere
+        // msg: '<b>Custom cookie msg without locales</b>.<a href="#" id="cookie-policy-consent-close">Aceptar</a>',
+        // expire_days: 999,
+        // before_element_ID: 'container',
+      });
+    });
+  });
+</script>
+````
+
 ## Autoloading
 
 Si se incluye el JS con la opción "autoloading" intentará hacer todo el proceso, con las opciones por defecto... está sería así:
@@ -242,7 +261,7 @@ Si se incluye el JS con la opción "autoloading" intentará hacer todo el proces
 Si queremos especificar un idioma diferente del definido por defecto en el autoloading podemos pasarlo al final del path del script con `lang=XX`. Por ejemplo:
 
 ````html
-<script src="cookie-policy-consent.js?auto_init&amp;lang=en"></script>
+<script src="cookie-policy-consent.js?auto_init=1&amp;lang=en"></script>
 ````
 
 ## To-do
@@ -251,4 +270,5 @@ Añadir soporte para que el evento de onclick en el botón de cerrar no machaque
 
 ## Changelog
 
+- 2016 / 02 / 01 Simplificadas varias cosas, corregido el tema de auto_init.
 - 2016 / 01 / 25 Añadido parámetro `expire_days`, para la duracción de la cookie.

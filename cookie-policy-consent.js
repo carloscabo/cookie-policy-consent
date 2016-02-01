@@ -30,13 +30,11 @@ var CPC = {
   hID: document.getElementsByTagName('head')[0],
 
   init: function(user_options) {
-    // Si no hay cookie
-    if (!CPC.check(CPC.options.cookie_name)) {
-      CPC.postInit(user_options);
+    // Si ya hay cookie
+    if (CPC.check(CPC.options.cookie_name)) {
+      return;
     }
-  },
 
-  postInit: function(user_options) {
     // Merge params if passed on init
     if (typeof user_options !== 'undefined') {
       for (var attrname in user_options) {
@@ -235,11 +233,11 @@ var CPC = {
     var p = CPC.data.script_url_params;
     if (typeof p !== 'undefined' && p !== null) {
       // If has autoinit parameter
-      if (p.match(/\?auto_init/)) {
+      if (p.match(/auto_init/)) {
         // If set lang parameter
         var L = p.match(/lang=(.*)$/);
         if (L) CPC.params.lang = l[1];
-        CPC.fn.postInit();
+        CPC.init();
       }
     }
   }
