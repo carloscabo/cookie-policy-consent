@@ -178,7 +178,7 @@ var CPC = {
     // If undefined OR null
     if (CPC.options.before_element_ID !== null) {
       // Append before elemint_ID
-      var bID = document.getElementById(CPC.fn.params.before_element_ID);
+      var bID = document.getElementById(CPC.options.before_element_ID);
       bID.parentNode.insertBefore(d, bID);
     } else {
       // Append at end of body
