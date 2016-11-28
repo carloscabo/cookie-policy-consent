@@ -30,16 +30,16 @@ var CPC = {
   hID: document.getElementsByTagName('head')[0],
 
   init: function(user_options) {
-    // Si ya hay cookie
-    if (CPC.check(CPC.options.cookie_name)) {
-      return;
-    }
-
     // Merge params if passed on init
     if (typeof user_options !== 'undefined') {
       for (var attrname in user_options) {
         CPC.options[attrname] = user_options[attrname];
       }
+    }
+
+    // Si ya hay cookie
+    if (CPC.check(CPC.options.cookie_name)) {
+      return;
     }
 
     // Set default CSS path
