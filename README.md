@@ -270,5 +270,6 @@ Añadir soporte para que el evento de onclick en el botón de cerrar no machaque
 
 ## Changelog
 
-- 2016 / 02 / 01 Simplificadas varias cosas, corregido el tema de auto_init.
-- 2016 / 01 / 25 Añadido parámetro `expire_days`, para la duracción de la cookie.
+- v2.1.2 | 2017 / 07 / 08 | Fixed bug iwth old parameter
+- 2016 / 02 / 01 | Simplificadas varias cosas, corregido el tema de auto_init.
+- 2016 / 01 / 25 | Añadido parámetro `expire_days`, para la duracción de la cookie.
