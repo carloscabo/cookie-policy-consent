@@ -195,7 +195,8 @@ var CPC = {
     // If there is close button
     var cb = document.getElementById('cookie-policy-consent-close');
     if (cb !== null && !CPC.options.click_anywhere) {
-      cb.onclick = function(){
+      cb.onclick = function(e){
+        e.preventDefault();
         CPC.removeWarning();
       };
     } else {
