@@ -1,5 +1,5 @@
-Cookie-policy-consent
-=====================
+Cookie-policy-consent 2.1.3
+===========================
 
 Aviso de Cookies genérico en JS puro (no necesita JQuery ni similar).
 
@@ -270,6 +270,7 @@ Añadir soporte para que el evento de onclick en el botón de cerrar no machaque
 
 ## Changelog
 
+- v2.1.3 | 2017 / 11 / 27 | Add preventDefault to close button
 - v2.1.2 | 2017 / 07 / 08 | Fixed bug iwth old parameter
 - 2016 / 02 / 01 | Simplificadas varias cosas, corregido el tema de auto_init.
 - 2016 / 01 / 25 | Añadido parámetro `expire_days`, para la duracción de la cookie.
